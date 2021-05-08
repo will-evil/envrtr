@@ -1,8 +1,11 @@
 # Environment Retractor
+<a href='https://github.com/jpoles1/gopherbadger' target='_blank'>![gopherbadger-tag-do-not-edit](https://img.shields.io/badge/Go%20Coverage-100%25-brightgreen.svg?longCache=true&style=flat)</a>
+[![Go Report Card](https://goreportcard.com/badge/github.com/will-evil/envrtr)](https://goreportcard.com/report/github.com/will-evil/envrtr)
+
 
 `envrtr` is a pure package for applying and rolling back the state of environment variables.
 
-# For what?
+## For what?
 
 This package is really useful when you need to test a piece of code whose behavior depends on the environment variables.
 The package will help bring the variables to the desired state, and at the end of the test, return them to their original state.
