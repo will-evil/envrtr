@@ -18,6 +18,8 @@ go get github.com/will-evil/envrtr
 
 ## Examples
 
+### Using only envrtr
+
 ```
 import (
     "testing"
