@@ -27,8 +27,6 @@ import (
     "github.com/will-evil/envrtr"
 )
 
-### Using only envrtr
-
 func TestSome(t *testing) {
     // map of environment variable names and new values for this variables
     envValues := map[string]string{
