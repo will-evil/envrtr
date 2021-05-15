@@ -20,27 +20,51 @@ go get github.com/will-evil/envrtr
 
 ### Using only envrtr
 
+**When need set environment variables**
+
 ```
 import (
-    "testing"
+	"testing"
 
-    "github.com/will-evil/envrtr"
+	"github.com/will-evil/envrtr"
 )
 
 func TestSome(t *testing) {
-    // map of environment variable names and new values for this variables
-    envValues := map[string]string{
+	// map of environment variable names and new values for this variables
+	envValues := map[string]string{
 		"TEST_ENV":  "value",
 		"TEST_ENV2": "value2",
 		"TEST_ENV3": "value3",
 	}
-    // create new retractor instance and set new values for provided environment variables
-    r := envrtr.NewEnvRetractor(envValues).PullOut()
-    // rolling back environment variables to their original state
-    defer r.Retract()
+	// create new retractor instance and set new values for provided environment variables
+	r := envrtr.NewEnvRetractor(envValues).PullOut()
+	// rolling back environment variables to their original state
+	defer r.Retract()
 
-    res := Some()
-    // check result of function
+	res := Some()
+	// check result of function
+}
+```
+
+**When need unset environment variables**
+
+```
+import (
+	"testing"
+
+	"github.com/will-evil/envrtr"
+)
+
+func TestSome(t *testing) {
+	// slice of environment variable names for unset
+	envValues := []string{"TEST_ENV", "TEST_ENV2", "TEST_ENV3"}
+	// create new retractor instance and unset environment variables with provided names
+	r := envrtr.NewEnvUnsetRetractor(envValues).PullOut()
+	// rolling back environment variables to their original state
+	defer r.Retract()
+
+	res := Some()
+	// check result of function
 }
 ```
 
@@ -50,37 +74,37 @@ func TestSome(t *testing) {
 import (
 	"testing"
 
-  	"github.com/will-evil/envrtr"
+	"github.com/will-evil/envrtr"
 	"github.com/stretchr/testify/suite"
 )
 
 type ExampleSuite struct {
 	suite.Suite
-    retractor *envrtr.EnvRetractor
+	retractor *envrtr.EnvRetractor
 }
 
 func (suite *ExampleSuite) SetupSuite() {
-  	envValues := map[string]string{
+	envValues := map[string]string{
 		"TEST_ENV":  "value",
 		"TEST_ENV2": "value2",
 		"TEST_ENV3": "value3",
 	}
-    suite.retractor = envrtr.NewEnvRetractor(envValues)
+	suite.retractor = envrtr.NewEnvRetractor(envValues)
 }
 
 func (suite *ExampleSuite) BeforeTest(_, _ string) {
-  	suite.retractor.PullOut()
+	suite.retractor.PullOut()
 }
 
 func (suite *ExampleSuite) AfterTest(_, _ string) {
-  	suite.retractor.Retract()
+	suite.retractor.Retract()
 }
 
 func (suite *ExampleSuite) TestSomething() {
-  	suite.Equal(true, true)
+	suite.Equal(true, true)
 }
 
 func TestRunSuite(t *testing.T) {
-  	suite.Run(t, new(ExampleSuite))
+	suite.Run(t, new(ExampleSuite))
 }
 ```
