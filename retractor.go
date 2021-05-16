@@ -14,3 +14,9 @@
 
 // Package envrtr provides functional to pull out (apply) and retract (rollback) changes for environment variables.
 package envrtr
+
+// Retractor common interface for retractors.
+type Retractor interface {
+	PullOut() Retractor
+	Retract()
+}

@@ -22,7 +22,7 @@ type EnvUnsetRetractor struct {
 }
 
 // NewEnvUnsetRetractor constructor for EnvUnsetRetractor.
-func NewEnvUnsetRetractor(envVars []string) *EnvUnsetRetractor {
+func NewEnvUnsetRetractor(envVars []string) Retractor {
 	r := &EnvUnsetRetractor{}
 	r.values = make(map[string]string)
 
@@ -38,7 +38,7 @@ func NewEnvUnsetRetractor(envVars []string) *EnvUnsetRetractor {
 }
 
 // PullOut sets provided values for environment variables.
-func (r *EnvUnsetRetractor) PullOut() *EnvUnsetRetractor {
+func (r *EnvUnsetRetractor) PullOut() Retractor {
 	for name := range r.values {
 		os.Unsetenv(name)
 	}
