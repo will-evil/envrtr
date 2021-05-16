@@ -12,7 +12,7 @@ func Test_NewEnvRetractor(t *testing.T) {
 	defer envRollbackValues(systemEnvValues)
 
 	envValues := envValues()
-	r := NewEnvRetractor(envValues)
+	r := NewEnvRetractor(envValues).(*EnvRetractor)
 	for name, tmpVal := range envValues {
 		t.Run(fmt.Sprintf("state_for_var_%s_with_val_%s", name, tmpVal), func(t *testing.T) {
 			valSet, ok := r.values[name]

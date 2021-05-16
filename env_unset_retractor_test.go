@@ -14,7 +14,7 @@ func Test_NewEnvUnsetRetractor(t *testing.T) {
 	envApplyValues(envValues)
 	defer envRollbackValues(envValues)
 
-	r := NewEnvUnsetRetractor([]string{"TEST_ENV", "TEST_ENV2", "TEST_ENV3"})
+	r := NewEnvUnsetRetractor([]string{"TEST_ENV", "TEST_ENV2", "TEST_ENV3"}).(*EnvUnsetRetractor)
 
 	t.Run("when check len of values map", func(t *testing.T) {
 		realLen := len(r.values)

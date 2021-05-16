@@ -29,7 +29,7 @@ type EnvRetractor struct {
 }
 
 // NewEnvRetractor constructor for EnvRetractor.
-func NewEnvRetractor(envValues map[string]string) *EnvRetractor {
+func NewEnvRetractor(envValues map[string]string) Retractor {
 	r := &EnvRetractor{}
 	r.values = make(map[string]envSet)
 
@@ -42,7 +42,7 @@ func NewEnvRetractor(envValues map[string]string) *EnvRetractor {
 }
 
 // PullOut sets provided values for environment variables.
-func (r *EnvRetractor) PullOut() *EnvRetractor {
+func (r *EnvRetractor) PullOut() Retractor {
 	for name, set := range r.values {
 		os.Setenv(name, set.tmp)
 	}
