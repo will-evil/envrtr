@@ -6,7 +6,7 @@ import (
 	"testing"
 )
 
-func Test_NewEnvUnsetRetractor(t *testing.T) {
+func TestNewEnvUnsetRetractor(t *testing.T) {
 	envValues := map[string]string{
 		"TEST_ENV":  "value",
 		"TEST_ENV2": "value2",
@@ -38,7 +38,7 @@ func Test_NewEnvUnsetRetractor(t *testing.T) {
 	}
 }
 
-func Test_EnvUnsetRetractor_PullOut(t *testing.T) {
+func TestEnvUnsetRetractor_PullOut(t *testing.T) {
 	envValues := map[string]string{
 		"TEST_ENV":  "value",
 		"TEST_ENV2": "value2",
@@ -59,7 +59,7 @@ func Test_EnvUnsetRetractor_PullOut(t *testing.T) {
 	}
 }
 
-func Test_EnvUnsetRetractor_Retract(t *testing.T) {
+func TestEnvUnsetRetractor_Retract(t *testing.T) {
 	envValues := map[string]string{
 		"TEST_ENV":  "value",
 		"TEST_ENV2": "value2",
