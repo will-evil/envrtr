@@ -6,7 +6,7 @@ import (
 	"testing"
 )
 
-func Test_NewEnvRetractor(t *testing.T) {
+func TestNewEnvRetractor(t *testing.T) {
 	systemEnvValues := systemEnvValues()
 	envApplyValues(systemEnvValues)
 	defer envRollbackValues(systemEnvValues)
@@ -47,7 +47,7 @@ func Test_NewEnvRetractor(t *testing.T) {
 	}
 }
 
-func Test_EnvRetractor_PullOut(t *testing.T) {
+func TestEnvRetractor_PullOut(t *testing.T) {
 	systemEnvValues := systemEnvValues()
 	envApplyValues(systemEnvValues)
 	defer envRollbackValues(systemEnvValues)
@@ -64,7 +64,7 @@ func Test_EnvRetractor_PullOut(t *testing.T) {
 	}
 }
 
-func Test_EnvRetractor_Retract(t *testing.T) {
+func TestEnvRetractor_Retract(t *testing.T) {
 	systemEnvValues := systemEnvValues()
 	envApplyValues(systemEnvValues)
 	defer envRollbackValues(systemEnvValues)
